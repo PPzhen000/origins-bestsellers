@@ -13,6 +13,11 @@ class OriginsBestsellers::Scraper
     skincare_product
   end
 
+  def self.skincare_product
+    self.scrape_skincare_page
+    binding.pry
+  end
+
   def self.scrape_bath_and_body_page
     bath_and_body_page = Nokogiri::HTML(open("https://www.origins.com/bathandbody-bestsellers"))
     bath_and_body_product = []
