@@ -14,7 +14,7 @@ class OriginsBestsellers::Scraper
   end
 
   def self.skincare_product
-    Scraper.scrape_skincare_page
+    self.scrape_skincare_page
   end
 
   def self.scrape_bath_and_body_page
@@ -31,7 +31,7 @@ class OriginsBestsellers::Scraper
   end
 
   def self.bath_and_body_product
-    Scraper.scrape_bath_and_body_page
+    self.scrape_bath_and_body_page
   end
 
   def self.scrape_makeup_page
@@ -48,7 +48,7 @@ class OriginsBestsellers::Scraper
   end
 
   def self.makeup_product
-    Scraper.scrape_makeup_page
+    self.scrape_makeup_page
   end
 
 end

@@ -2,7 +2,7 @@ class OriginsBestsellers::Product
   attr_accessor :name, :price
   @@all = []
 
-  def initialize(pruduct_hash)
+  def initialize(product_hash)
     product_hash.each do |attribute, value|
       self.send(("#{attribute}=") ,value)
     end
