@@ -14,8 +14,7 @@ class OriginsBestsellers::Scraper
   end
 
   def self.skincare_product
-    self.scrape_skincare_page
-    binding.pry
+    Scraper.scrape_skincare_page
   end
 
   def self.scrape_bath_and_body_page
@@ -31,6 +30,10 @@ class OriginsBestsellers::Scraper
     bath_and_body_product
   end
 
+  def self.bath_and_body_product
+    Scraper.scrape_bath_and_body_page
+  end
+
   def self.scrape_makeup_page
     makeup_page = Nokogiri::HTML(open("https://www.origins.com/makeup-bestsellers"))
     makeup_product = []
@@ -42,6 +45,10 @@ class OriginsBestsellers::Scraper
       count +=1
     end
     makeup_product
+  end
+
+  def self.makeup_product
+    Scraper.scrape_makeup_page
   end
 
 end
