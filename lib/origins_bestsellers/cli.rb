@@ -6,6 +6,18 @@ class OriginsBestsellers::CLI
     puts "Which catagory would you like to see the list of best sellers? Please type in the corresponding number for each catagory or type exit:"
     input = gets.strip
 
+    @product_array = []
+   case input
+   when "1"
+
+   when "2"
+
+   when "3"
+
+   when "exit"
+     goodbye
+   end
+
   end
 
 
