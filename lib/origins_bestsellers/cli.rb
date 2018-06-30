@@ -2,7 +2,13 @@ class OriginsBestsellers::CLI
 
   def call
     puts "Welcome! You are viewing Origins bestsellers!"
+    puts "Please view the bestsellers of Origins from 3 catagories: 1.SKINCARE, 2.BATH & BODY, 3.MAKEUP"
+    puts "Which catagory would you like to see the list of best sellers? Please type in the corresponding number for each catagory or type exit:"
+    input = gets.strip
+    
   end
+
+
 
 
   def goodbye
