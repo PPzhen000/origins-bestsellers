@@ -2,5 +2,4 @@
 
 require './lib/origins_bestsellers'
 
-
-OriginsBestsellers::CLI.new.call 
+OriginsBestsellers::CLI.new.call
