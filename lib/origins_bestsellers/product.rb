@@ -18,4 +18,17 @@ class OriginsBestsellers::Product
       Product.new(each_product)
     end
   end
+
+  def self.skincare_product
+    self.create_from_product_array(Scraper.skincare_product)
+  end
+
+  def self.bath_and_body_product
+    self.create_from_product_array(Scraper.bath_and_body_product)
+  end
+
+  def self.makeup_product
+    self.create_from_product_array(Scraper.makeup_product)
+  end
+
 end
