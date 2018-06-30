@@ -10,18 +10,18 @@ class OriginsBestsellers::CLI
    case input
    when "1"
      @product_array = Product.skincare_product
+     display_products
    when "2"
      @product_array = Product.bath_and_body_product
+     display_products
    when "3"
      @product_array = Product.makeup_product
+     display_products
    when "exit"
      goodbye
    end
 
   end
-
-
-
 
   def goodbye
     puts "Please come back to see our updates on bestsellers!"
