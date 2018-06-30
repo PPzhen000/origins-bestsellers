@@ -9,13 +9,13 @@ class OriginsBestsellers::CLI
     @product_array = []
    case input
    when "1"
-     @product_array = Product.skincare_product
+     @product_array = OriginsBestsellers::Product.skincare_product
      display_products
    when "2"
-     @product_array = Product.bath_and_body_product
+     @product_array = OriginsBestsellers::Product.bath_and_body_product
      display_products
    when "3"
-     @product_array = Product.makeup_product
+     @product_array = OriginsBestsellers::Product.makeup_product
      display_products
    when "exit"
      goodbye

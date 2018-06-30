@@ -15,20 +15,20 @@ class OriginsBestsellers::Product
 
   def self.create_from_product_array(product_array) #return value of Scraper.scrape_page methods
     product_array.each do |each_product|
-      Product.new(each_product)
+      OriginsBestsellers::Product.new(each_product)
     end
   end
 
   def self.skincare_product
-    self.create_from_product_array(Scraper.skincare_product)
+    self.create_from_product_array(OriginsBestsellers::Scraper.skincare_product)
   end
 
   def self.bath_and_body_product
-    self.create_from_product_array(Scraper.bath_and_body_product)
+    self.create_from_product_array(OriginsBestsellers::Scraper.bath_and_body_product)
   end
 
   def self.makeup_product
-    self.create_from_product_array(Scraper.makeup_product)
+    self.create_from_product_array(OriginsBestsellers::Scraper.makeup_product)
   end
 
 end
