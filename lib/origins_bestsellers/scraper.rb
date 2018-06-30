@@ -1,4 +1,4 @@
-class Scraper
+class OriginsBestsellers::Scraper
 
   def self.scrape_skincare_page
     skincare_page = Nokogiri::HTML(open("https://www.origins.com/skincare-bestsellers"))

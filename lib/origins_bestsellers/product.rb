@@ -1,4 +1,4 @@
-class Product
+class OriginsBestsellers::Product
   attr_accessor :name, :price
   @@all = []
 
