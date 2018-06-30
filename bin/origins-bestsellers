@@ -1,0 +1,6 @@
+#! /usr/bin/env ruby
+
+require './lib/origins_bestsellers'
+
+
+OriginsBestsellers::CLI.new.call 
