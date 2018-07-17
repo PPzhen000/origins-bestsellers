@@ -32,10 +32,16 @@ class OriginsBestsellers::CLI
 
 
   def display_products
+    puts "Here's a list of all the bestsellers :)"
     @product_array.each.with_index(1) do |product, index|
       puts "#{index}. #{product.name} - #{product.price}"
     end
     puts "------THE END------"
+    puts "Would you like to purchase an item from the list?"
+    puts "Please enter the item number to purchase the item:"
+    puts "Or you can type 'go back' to view products from other catagories"
+    puts "Or you can type 'exit' to exit the viewing"
+
   end
 
 end
