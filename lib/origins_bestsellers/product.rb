@@ -2,11 +2,10 @@ class OriginsBestsellers::Product
   attr_accessor :name, :price, :url
   @@all = []
 
-  def initialize(product_hash)
-    product_hash.each do |attribute, value|
-      self.send(("#{attribute}=") ,value)
-    end
-    @@all << self
+  def initialize(name = nil, price = nil, url = nil)
+    @name = name
+    @price = price
+    @url = url
   end
 
   def self.all
@@ -21,6 +20,7 @@ class OriginsBestsellers::Product
 
   def self.skincare_product
     self.create_from_product_array(OriginsBestsellers::Scraper.scrape_skincare_page)
+    binding.pry
   end
 
   def self.bath_and_body_product
