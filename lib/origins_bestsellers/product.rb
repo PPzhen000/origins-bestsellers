@@ -20,15 +20,15 @@ class OriginsBestsellers::Product
   end
 
   def self.skincare_product
-    self.create_from_product_array(OriginsBestsellers::Scraper.skincare_product)
+    self.create_from_product_array(OriginsBestsellers::Scraper.scrape_skincare_page)
   end
 
   def self.bath_and_body_product
-    self.create_from_product_array(OriginsBestsellers::Scraper.bath_and_body_product)
+    self.create_from_product_array(OriginsBestsellers::Scraper.scrape_bath_and_body_page)
   end
 
   def self.makeup_product
-    self.create_from_product_array(OriginsBestsellers::Scraper.makeup_product)
+    self.create_from_product_array(OriginsBestsellers::Scraper.scrape_makeup_page)
   end
 
 end
