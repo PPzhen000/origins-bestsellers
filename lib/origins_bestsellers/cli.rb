@@ -22,6 +22,9 @@ class OriginsBestsellers::CLI
         display_products
       when "exit"
         goodbye
+        break
+      else
+        invalid
       end
     end
   end
@@ -32,7 +35,6 @@ class OriginsBestsellers::CLI
 
   def invalid
     puts "Not sure what you are looking for! Please type in the corresponding number for each catagory"
-    puts "To quit, type 'exit'."
   end
 
   def display_products
@@ -41,10 +43,22 @@ class OriginsBestsellers::CLI
       puts "#{index}. #{product.name} - #{product.price}"
     end
     puts "------THE END------"
-    puts "Would you like to purchase an item from the list?"
-    puts "Please enter the item number to purchase the item:"
-    puts "Or you can type 'go back' to view products from other catagories"
-    puts "Or you can type 'exit' to exit the viewing"
+  end
+
+  def purchase_item(product_url)
+    puts "Would you like to purchase an item from the list? Please enter 'Y' or 'N':"
+
+    input = gets.strip.upcase
+
+    if input == "Y"
+      puts "Please enter the item number to purchase the item:"
+      system("open #{product_url}")
+    elsif input = "N"
+      puts "You can type 'go back' to view products from other catagories"
+      puts "Or you can type 'exit' to exit the viewing"
+
+    end
+
   end
 
 end
