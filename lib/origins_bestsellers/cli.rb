@@ -52,13 +52,15 @@ class OriginsBestsellers::CLI
 
     if input == "Y"
       puts "Please enter the item number to purchase the item:"
-      system("open #{product_url}")
+      make_a_purchase(product_url)
     elsif input = "N"
-      puts "You can type 'go back' to view products from other catagories"
-      puts "Or you can type 'exit' to exit the viewing"
-
+      call 
     end
 
+  end
+
+  def make_a_purchase(product_url)
+    system("open #{product_url}")
   end
 
 end
