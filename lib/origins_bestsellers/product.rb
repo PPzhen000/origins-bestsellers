@@ -1,5 +1,5 @@
 class OriginsBestsellers::Product
-  attr_accessor :name, :price
+  attr_accessor :name, :price, :url
   @@all = []
 
   def initialize(product_hash)

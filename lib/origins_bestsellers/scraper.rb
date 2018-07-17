@@ -1,33 +1,30 @@
 class OriginsBestsellers::Scraper
 
-  def self.scrape_skincare_page
-    skincare_page = Nokogiri::HTML(open("https://www.origins.com/skincare-bestsellers"))
-    skincare_product = []
-    count = 0
-    while skincare_page.css(".product-brief__subtitle").size > count do
-      product_name = skincare_page.css(".product-brief__subtitle")[count].text.strip
-      product_price = skincare_page.css(".product-brief__price.down-price")[count].text.strip
-      skincare_product[count] = {name: product_name, price: product_price}
-      count +=1
+  def self.scrape_page(url)
+    doc = Nokogiri::HTML(open(url))
+    product = []
+    doc.css(".product-grid-wrapper").each do |products|
+      products.css(".js-product.js-product-pr.product-brief").each do |each_product|
+        product_name = each_product.css("a.product-brief__subtitle__link.js-spp-link").text
+        product_price = each_product.css(".product-brief__price.down-price").text.strip
+        product_url = "https://www.origins.com" + "#{each_product.css("h3").css("a").attr("href").text}"
+        product << {name: product_name, price: product_price, url: product_url}
+      end
     end
-    skincare_product
+      product
   end
+
+  def self.scrape_skincare_page
+    self.scrape_page("https://www.origins.com/skincare-bestsellers")
+  end
+
 
   def self.skincare_product
     self.scrape_skincare_page
   end
 
   def self.scrape_bath_and_body_page
-    bath_and_body_page = Nokogiri::HTML(open("https://www.origins.com/bathandbody-bestsellers"))
-    bath_and_body_product = []
-    count = 0
-    while bath_and_body_page.css(".product-brief__subtitle").size > count do
-      product_name = bath_and_body_page.css(".product-brief__subtitle")[count].text.strip
-      product_price = bath_and_body_page.css(".product-brief__price.down-price")[count].text.strip
-      bath_and_body_product[count] = {name: product_name, price: product_price}
-      count +=1
-    end
-    bath_and_body_product
+    self.scrape_page("https://www.origins.com/bathandbody-bestsellers")
   end
 
   def self.bath_and_body_product
@@ -35,16 +32,8 @@ class OriginsBestsellers::Scraper
   end
 
   def self.scrape_makeup_page
-    makeup_page = Nokogiri::HTML(open("https://www.origins.com/makeup-bestsellers"))
-    makeup_product = []
-    count = 0
-    while makeup_page.css(".product-brief__subtitle").size > count do
-      product_name = makeup_page.css(".product-brief__subtitle")[count].text.strip
-      product_price = makeup_page.css(".product-brief__price.down-price")[count].text.strip
-      makeup_product[count] = {name: product_name, price: product_price}
-      count +=1
-    end
-    makeup_product
+    self.scrape_page("https://www.origins.com/makeup-bestsellers")
+
   end
 
   def self.makeup_product
