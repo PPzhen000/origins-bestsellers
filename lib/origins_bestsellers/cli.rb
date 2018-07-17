@@ -9,16 +9,16 @@ class OriginsBestsellers::CLI
     puts "To quit, type 'exit'."
     input = gets.strip
 
-      @product_array = []
+      @product_array = nil
       case input
       when "1"
-        @product_array = OriginsBestsellers::Product.skincare_product
+        @product_array = OriginsBestsellers::Scraper.scrape_skincare_page
         display_products
       when "2"
-        @product_array = OriginsBestsellers::Product.bath_and_body_product
+        @product_array = OriginsBestsellers::Scraper.scrape_bath_and_body_page
         display_products
       when "3"
-        @product_array = OriginsBestsellers::Product.makeup_product
+        @product_array = OriginsBestsellers::Scraper.scrape_makeup_page
         display_products
       when "exit"
         goodbye
@@ -33,9 +33,9 @@ class OriginsBestsellers::CLI
 
   def display_products
     @product_array.each.with_index(1) do |product, index|
-      puts "#{index} - #{product[:name]} - #{product[:price]}"
-      puts "-----------"
+      puts "#{index}. #{product.name} - #{product.price}"
     end
+    puts "------THE END------"
   end
 
 end
