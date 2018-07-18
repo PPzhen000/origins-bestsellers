@@ -2,9 +2,9 @@ class OriginsBestsellers::CLI
 
   def call
     input = ""
-    puts "Welcome! You are viewing Origins bestsellers!"
+    puts "Welcome! You are viewing Origins bestsellers!".colorize(:red)
     while input != "exit"
-    puts "Please view the bestsellers of Origins from 3 catagories: 1.SKINCARE, 2.BATH & BODY, 3.MAKEUP"
+    puts "Please view the bestsellers of Origins from 3 catagories: " + "1.SKINCARE, 2.BATH & BODY, 3.MAKEUP".colorize(:red)
     puts "Which catagory would you like to see the list of best sellers? Please type in the corresponding number for each catagory"
     puts "To quit, type 'exit'."
     input = gets.strip
@@ -57,15 +57,16 @@ class OriginsBestsellers::CLI
     if input == "Y"
       puts "Please enter the item number to purchase the item:"
       product_number = gets.strip
-      make_a_purchase(@product_url[product_number - 1])
+      make_a_purchase(@product_url[product_number.to_i - 1])
     elsif input = "N"
-      call
+      "Please keep browsing and hope you would find something you like!"
     end
   end
 
   def make_a_purchase(product_url)
     # system(open product_url)
-    puts "Here is the link to purchase the product: #{product_url}"
+    puts "Here is the link to purchase the product: "
+    puts "#{product_url}".colorize(:light_blue)
   end
 
 end
