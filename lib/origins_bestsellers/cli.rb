@@ -9,19 +9,19 @@ class OriginsBestsellers::CLI
     puts "To quit, type 'exit'."
     input = gets.strip
 
-      @product_array = nil
+      # @product_array = nil
       case input
       when "1"
-        @product_array = OriginsBestsellers::Scraper.scrape_skincare_page
-        display_products
+        OriginsBestsellers::Scraper.scrape_skincare_page
+        display_products("skincare")
         purchase_item
       when "2"
-        @product_array = OriginsBestsellers::Scraper.scrape_bath_and_body_page
-        display_products
+        OriginsBestsellers::Scraper.scrape_bath_and_body_page
+        display_products("bathandbody")
         purchase_item
       when "3"
-        @product_array = OriginsBestsellers::Scraper.scrape_makeup_page
-        display_products
+        OriginsBestsellers::Scraper.scrape_makeup_page
+        display_products("makeup")
         purchase_item
       when "exit"
         goodbye
@@ -41,13 +41,13 @@ class OriginsBestsellers::CLI
     puts "------------"
   end
 
-  def display_products
+  def display_products(product_type)
     puts "Here's a list of all the bestsellers :)".colorize(:green)
     puts "------------"
-    @product_url = []
-    @product_array.each.with_index(1) do |product, index|
+    @products = OriginsBestsellers::Product.find_by_product_type(product_type) 
+    @products.each.with_index(1) do |product, index|
       puts "#{index}. #{product.name} - #{product.price}"
-      @product_url << product.url
+      # @product_url << product.url
     end
     puts "------THE END------"
   end
@@ -58,7 +58,7 @@ class OriginsBestsellers::CLI
     if input == "Y"
       puts "Please enter the item number to purchase the item:"
       product_number = gets.strip
-      make_a_purchase(@product_url[product_number.to_i - 1])
+      make_a_purchase(@products[product_number.to_i - 1].url) 
     elsif input == "N"
       puts "Please keep browsing and hope you would find something you like!"
     end
