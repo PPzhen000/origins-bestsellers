@@ -2,7 +2,7 @@ class OriginsBestsellers::CLI
 
   def call
     input = ""
-    puts "Welcome! You are viewing Origins bestsellers!".colorize(:red)
+    puts "Welcome! You are viewing Origins bestsellers :)".colorize(:red)
     while input != "exit"
     puts "Please view the bestsellers of Origins from 3 catagories: " + "1.SKINCARE, 2.BATH & BODY, 3.MAKEUP".colorize(:red)
     puts "Which catagory would you like to see the list of best sellers? Please type in the corresponding number for each catagory"
@@ -33,22 +33,23 @@ class OriginsBestsellers::CLI
   end
 
   def goodbye
-    puts "Please come back to see our updates on bestsellers!"
+    puts "Please come back to see our updates on bestsellers!".colorize(:light_blue)
   end
 
   def invalid
     puts "Not sure what you are looking for! Please type in the corresponding number for each catagory"
+    puts "------------"
   end
 
   def display_products
-    puts "Here's a list of all the bestsellers :)"
+    puts "Here's a list of all the bestsellers :)".colorize(:green)
+    puts "------------"
     @product_url = []
     @product_array.each.with_index(1) do |product, index|
       puts "#{index}. #{product.name} - #{product.price}"
       @product_url << product.url
     end
     puts "------THE END------"
-    binding.pry
   end
 
   def purchase_item
@@ -58,8 +59,8 @@ class OriginsBestsellers::CLI
       puts "Please enter the item number to purchase the item:"
       product_number = gets.strip
       make_a_purchase(@product_url[product_number.to_i - 1])
-    elsif input = "N"
-      "Please keep browsing and hope you would find something you like!"
+    elsif input == "N"
+      puts "Please keep browsing and hope you would find something you like!"
     end
   end
 
@@ -67,6 +68,7 @@ class OriginsBestsellers::CLI
     # system(open product_url)
     puts "Here is the link to purchase the product: "
     puts "#{product_url}".colorize(:light_blue)
+    puts "~~~~~~~~~~~~~"
   end
 
 end
