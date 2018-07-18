@@ -14,12 +14,15 @@ class OriginsBestsellers::CLI
       when "1"
         @product_array = OriginsBestsellers::Scraper.scrape_skincare_page
         display_products
+        purchase_item
       when "2"
         @product_array = OriginsBestsellers::Scraper.scrape_bath_and_body_page
         display_products
+        purchase_item
       when "3"
         @product_array = OriginsBestsellers::Scraper.scrape_makeup_page
         display_products
+        purchase_item
       when "exit"
         goodbye
         break
@@ -39,28 +42,30 @@ class OriginsBestsellers::CLI
 
   def display_products
     puts "Here's a list of all the bestsellers :)"
+    @product_url = []
     @product_array.each.with_index(1) do |product, index|
       puts "#{index}. #{product.name} - #{product.price}"
+      @product_url << product.url
     end
     puts "------THE END------"
+    binding.pry
   end
 
-  def purchase_item(product_url)
+  def purchase_item
     puts "Would you like to purchase an item from the list? Please enter 'Y' or 'N':"
-
     input = gets.strip.upcase
-
     if input == "Y"
       puts "Please enter the item number to purchase the item:"
-      make_a_purchase(product_url)
+      product_number = gets.strip
+      make_a_purchase(@product_url[product_number - 1])
     elsif input = "N"
-      call 
+      call
     end
-
   end
 
   def make_a_purchase(product_url)
-    system("open #{product_url}")
+    # system(open product_url)
+    puts "Here is the link to purchase the product: #{product_url}"
   end
 
 end
